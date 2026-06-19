@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp 
   xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
-  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" 
+  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides" 
   xsi:type="MailApp">
   
-  <Id>d25bc12e-1337-4bc2-8921-9d93f18ea3c4</Id>
+  <Id>61b20d94-1560-4461-b31b-64190d7a6e98</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Internal IT Tools</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
@@ -27,8 +27,10 @@
   </Requirements>
   
   <FormSettings>
-    <Form xsi:type="ItemRead">
-      <SourceLocation DefaultValue="https://stubhohm.github.io/OutlookSpecialReply2All/commands.html"/>
+    <Form FormType="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://stubhohm.github.io/OutlookSpecialReply2All/commands.html"/>
+      </DesktopSettings>
     </Form>
   </FormSettings>
   
@@ -38,7 +40,7 @@
     <Rule xsi:type="ItemIs" ItemType="Message"/>
   </Rule>
   
-  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="VersionOverridesV1_0">
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="mailappor:VersionOverridesV1_0">
     <Description resid="residDescription"/>
     <Requirements>
       <bt:Sets DefaultMinVersion="1.5">
