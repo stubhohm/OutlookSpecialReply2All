@@ -24,7 +24,7 @@
 
   <FormSettings>
     <Form xsi:type="ItemRead">
-      <SourceLocation DefaultValue="https://yoursecurewebhost.com/path/commands.html"/>
+      <SourceLocation DefaultValue="https://stubhohm.github.io/OutlookSpecialReply2All/commands.html"/>
     </Form>
   </FormSettings>
 
