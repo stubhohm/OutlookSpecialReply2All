@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp 
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" 
+  xsi:type="MailApp">
+  
+  <Id>d25bc12e-1337-4bc2-8921-9d93f18ea3c4</Id> <Version>1.0.0.0</Version>
+  <ProviderName>Internal IT Tools</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Special Reply Tools"/>
+  <Description DefaultValue="Custom reply mechanisms for complex mail threads."/>
+
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.5" />
+    </Sets>
+  </Requirements>
+
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <SourceLocation DefaultValue="https://yoursecurewebhost.com/path/commands.html"/>
+    </Form>
+  </FormSettings>
+
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" />
+  </Rule>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="VersionOverridesV1_0">
+    <Description resid="residDescription" />
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.5">
+        <bt:Set Name="Mailbox" />
+      </bt:Sets>
+    </Requirements>
+    
+    <Hosts>
+      <Host xsi:type="Mailbox">
+        <DesktopFormFactor>
+          <FunctionFile resid="residFunctionFile" />
+
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadGroup">
+                <Label resid="residGroupName" />
+                
+                <Control xsi:type="Button" id="btnSpecialReply">
+                  <Label resid="residBtnLabel" />
+                  <Supertip>
+                    <Title resid="residBtnLabel" />
+                    <Description resid="residBtnTooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16" />
+                    <bt:Image size="32" resid="icon32" />
+                    <bt:Image size="80" resid="icon80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>specialReplyToAll</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon16" DefaultValue="https://appsforoffice.microsoft.com/assets/images/placeholder-16.png"/>
+        <bt:Image id="icon32" DefaultValue="https://appsforoffice.microsoft.com/assets/images/placeholder-32.png"/>
+        <bt:Image id="icon80" DefaultValue="https://appsforoffice.microsoft.com/assets/images/placeholder-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="residFunctionFile" DefaultValue="https://yoursecurewebhost.com/path/commands.html" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="residGroupName" DefaultValue="Custom Replying" />
+        <bt:String id="residBtnLabel" DefaultValue="Special Reply All" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="residDescription" DefaultValue="Automates recipient shuffling to keep threads clean." />
+        <bt:String id="residBtnTooltip" DefaultValue="Creates a reply placing sender in TO, and everyone else explicitly into CC." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
