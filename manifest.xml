@@ -80,7 +80,7 @@
         <bt:Image id="icon80" DefaultValue="https://appsforoffice.microsoft.com/assets/images/placeholder-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="residFunctionFile" DefaultValue="https://yoursecurewebhost.com/path/commands.html" />
+        <bt:Url id="residFunctionFile" DefaultValue="https://stubhohm.github.io/OutlookSpecialReply2All/commands.html" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="residGroupName" DefaultValue="Custom Replying" />
