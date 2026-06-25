@@ -1,11 +1,14 @@
 console.log("[SpecialReplyTools] Script file loaded and executing initial blocks.");
 
+// Register the function with the Office environment
 Office.onReady((info) => {
   console.log("[SpecialReplyTools] Office.onReady fired. Host:", info.host, " Platform:", info.platform);
   
   if (info.host === Office.HostType.Outlook) {
     console.log("[SpecialReplyTools] Host is Outlook. Associating 'specialReplyToAll' action...");
     try {
+      window.specialReplyToAll = specialReplyToAll; 
+
       Office.actions.associate("specialReplyToAll", specialReplyToAll);
       console.log("[SpecialReplyTools] Action successfully associated with the manifest ID.");
     } catch (assocError) {
@@ -15,6 +18,7 @@ Office.onReady((info) => {
     console.warn("[SpecialReplyTools] Host type mismatch. Expected Outlook, got:", info.host);
   }
 });
+
 
 function specialReplyToAll(event) {
   console.log("[SpecialReplyTools] ---> specialReplyToAll function triggered! <---");
