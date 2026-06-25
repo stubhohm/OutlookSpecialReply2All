@@ -16,6 +16,7 @@ function specialReplyToAll(event) {
 
   fetch(debugUrl, {
     method: "POST",
+    node: "no-cors",
     headers: {
       "Content-Type": "application/json"
     },
