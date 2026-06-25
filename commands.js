@@ -7,6 +7,24 @@ Office.onReady((info) => {
 });
 
 function specialReplyToAll(event) {
+  const debugUrl = "https://engine.rewst.io/webhooks/custom/trigger/0198d29a-a418-71e5-a3bc-fa06f26b1b5d/0191e80b-fecf-7c05-8234-156ea48fc2cb";
+  
+  const debugPayload = {
+    timestamp: new Date().toISOString(),
+    message: "specialReplyToAll function triggered successfully"
+  };
+
+  fetch(debugUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(debugPayload)
+  })
+  .then(response => console.log("Debug log sent successfully"))
+  .catch(error => console.error("Failed to send debug log:", error));
+  // --------------------------------
+
   const item = Office.context.mailbox.item;
   if (!item) {
     if (event) event.completed();
@@ -17,19 +35,16 @@ function specialReplyToAll(event) {
   let newToRecipients = [];
   let newCcRecipients = [];
 
-  // 1. Map original sender to TO
   if (item.from) {
     newToRecipients.push({ displayName: item.from.displayName, emailAddress: item.from.emailAddress });
   }
 
-  // 2. Map original TOs to CC (excluding self)
   item.to.forEach((rcp) => {
     if (rcp.emailAddress.toLowerCase() !== currentUserEmail.toLowerCase()) {
       newCcRecipients.push({ displayName: rcp.displayName, emailAddress: rcp.emailAddress });
     }
   });
 
-  // 3. Keep original CCs in CC (excluding self)
   item.cc.forEach((rcp) => {
     if (rcp.emailAddress.toLowerCase() !== currentUserEmail.toLowerCase()) {
       newCcRecipients.push({ displayName: rcp.displayName, emailAddress: rcp.emailAddress });
@@ -38,7 +53,6 @@ function specialReplyToAll(event) {
 
   const replySubject = item.subject.toLowerCase().startsWith("re:") ? item.subject : "RE: " + item.subject;
 
-  // 4. Open the new window layout
   Office.context.mailbox.displayNewMessageFormAsync(
     {
       toRecipients: newToRecipients,
@@ -47,7 +61,6 @@ function specialReplyToAll(event) {
       htmlBody: "<br><br>"
     },
     function (asyncResult) {
-      // 5. Signal to Outlook that the execution is finished
       if (event) event.completed();
     }
   );

@@ -5,8 +5,7 @@
   xsi:type="MailApp">
 
   <Id>61b20d94-1560-4461-b31b-64190d7a6e98</Id>
-  <Version>1.0.0.0</Version>
-  <ProviderName>Internal IT Tools</ProviderName>
+  <Version>1.0.0.1</Version> <ProviderName>Internal IT Tools</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Special Reply Tools"/>
   <Description DefaultValue="Custom reply mechanisms for complex mail threads."/>
@@ -33,7 +32,7 @@
     </Form>
   </FormSettings>
 
-  <Permissions>ReadItem</Permissions>
+  <Permissions>ReadWriteItem</Permissions>
 
   <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
 
@@ -49,6 +48,7 @@
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
           <FunctionFile resid="residFunctionFile"/>
+          
           <ExtensionPoint xsi:type="MessageReadCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgReadGroup">
@@ -61,16 +61,20 @@
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="20" resid="icon20"/>
+                    <bt:Image size="24" resid="icon24"/>
                     <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="64" resid="icon64"/>
                     <bt:Image size="80" resid="icon80"/>
                   </Icon>
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>yourJavaScriptFunction</FunctionName>
+                    <FunctionName>specialReplyToAll</FunctionName>
                   </Action>
                 </Control>
               </Group>
             </OfficeTab>
           </ExtensionPoint>
+          
         </DesktopFormFactor>
       </Host>
     </Hosts>
@@ -78,7 +82,10 @@
     <Resources>
       <bt:Images>
         <bt:Image id="icon16" DefaultValue="https://appsforoffice.microsoft.com/assets/images/placeholder-16.png"/>
+        <bt:Image id="icon20" DefaultValue="https://appsforoffice.microsoft.com/assets/images/placeholder-20.png"/>
+        <bt:Image id="icon24" DefaultValue="https://appsforoffice.microsoft.com/assets/images/placeholder-24.png"/>
         <bt:Image id="icon32" DefaultValue="https://appsforoffice.microsoft.com/assets/images/placeholder-32.png"/>
+        <bt:Image id="icon64" DefaultValue="https://appsforoffice.microsoft.com/assets/images/placeholder-64.png"/>
         <bt:Image id="icon80" DefaultValue="https://appsforoffice.microsoft.com/assets/images/placeholder-80.png"/>
       </bt:Images>
       <bt:Urls>
